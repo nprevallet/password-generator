@@ -108,7 +108,8 @@ function generatePassword(){
 
 // Saves what becomes our password
 var results = [];
-var requiredCharacters = [];
+var requiredC = [];
+var cArray = [];
 
 // Selects random value from array
 function randomCharSelect(array) {
@@ -116,32 +117,39 @@ function randomCharSelect(array) {
 }
 
 // If statement pushes these password choices into the required characters array
-if(passwordChoices.specialC) {
+if (passwordChoices.specialC) {
   results.push(randomCharSelect(specialC));
-  requiredCharacters.concat(specialC);
+  requiredC = requiredC.concat(specialC);
+  console.log(requiredC);
 }
 
-if(passwordChoices.uppercaseC) {
+if (passwordChoices.uppercaseC) {
   results.push(randomCharSelect(uppercaseC));
-  requiredCharacters.concat(uppercaseC);
+  requiredC = requiredC.concat(uppercaseC);
 }
 
-if(passwordChoices.lowercaseC) {
+if (passwordChoices.lowercaseC) {
   results.push(randomCharSelect(lowercaseC));
-  requiredCharacters.concat(lowercaseC);
+  requiredC = requiredC.concat(lowercaseC);
 }
 
-if(passwordChoices.number) {
+if (passwordChoices.number) {
   results.push(randomCharSelect(number));
-  requiredCharacters.concat(number);
+  requiredC = requiredC.concat(number);
 }
-for (var i = 0; i < passwordChoices.pLength - results.length; i++) {
-  var randomC = randomCharSelect(requiredCharacters);
+
+for (var i = 0; i <(passwordChoices.pLength - results.length); i++) {
+  var randomC = randomCharSelect(requiredC);
   results.push(randomC);
   console.log(results);
 }
 
+  
 }
+
+
+
+// Still need an if statement before the above to validate the password length
 
 
 
@@ -159,7 +167,3 @@ function writePassword() {
 
 // Add event listener to generate button
 generateBtn.addEventListener("click", writePassword);
-
-function myFunction() {
-  document.getElementById("demo").innerHTML = "Hello World";
-}
